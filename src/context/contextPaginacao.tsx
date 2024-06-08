@@ -65,7 +65,7 @@ export function PaginacaoContextProvider({
       const response = await api.get<PromiseType>(`/pokemon/${nome}`)
       setPokemons([response.data])
     } catch (erro) {
-      console.erro('erro ao buscar pokemon', erro)
+      console.error('erro ao buscar pokemon', erro)
     }
   }
   // 05
