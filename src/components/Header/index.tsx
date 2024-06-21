@@ -5,9 +5,9 @@ import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useContext } from 'react'
 import { PaginacaoContext } from '../../context/contextPaginacao'
-// type 1
+// type 1 schema
 const schemaBusca = z.object({
-  busca: z.string(),
+  busca: z.string().min(3).max(12),
 })
 // type 02
 type schemaBuscaType = z.infer<typeof schemaBusca>

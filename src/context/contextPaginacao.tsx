@@ -13,9 +13,17 @@ interface PrimeiroBuscaApiType {
 // type 02
 interface PromiseType {
   name: string
+  weight: number
+  height: number
+
   sprites: {
     front_default: string
   }
+  types: type[]
+}
+interface PokemonModalType {
+  nome: string
+  front_default: string
 }
 
 // type 03
@@ -24,6 +32,8 @@ interface PaginacaoContext {
   setPagina: (pagina: number) => void
   pokemon: PromiseType[]
   buscarPokemonPorNome: (nome: string) => Promise<void>
+  pokemonModal: PokemonModalType | null
+  setPokemonModal: (pokemon: PokemonModalType | null) => void
 }
 // type 04
 interface PaginacaoContextProviderType {
@@ -33,7 +43,7 @@ interface PaginacaoContextProviderType {
 // Context
 export const PaginacaoContext = createContext({} as PaginacaoContext)
 
-// Provider
+// Função provider
 export function PaginacaoContextProvider({
   children,
 }: PaginacaoContextProviderType) {
@@ -42,6 +52,9 @@ export function PaginacaoContextProvider({
 
   // 2
   const [pokemon, setPokemons] = useState<PromiseType[]>([])
+  const [pokemonModal, setPokemonModal] = useState<PokemonModalType | null>(
+    null,
+  )
 
   // 03
   async function dadosPokemonApi() {
@@ -76,7 +89,14 @@ export function PaginacaoContextProvider({
   // -------------------
   return (
     <PaginacaoContext.Provider
-      value={{ pagina, setPagina, pokemon, buscarPokemonPorNome }}
+      value={{
+        pagina,
+        setPagina,
+        pokemon,
+        buscarPokemonPorNome,
+        pokemonModal,
+        setPokemonModal,
+      }}
     >
       {children}
     </PaginacaoContext.Provider>
