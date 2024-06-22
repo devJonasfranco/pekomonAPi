@@ -11,6 +11,21 @@ interface PrimeiroBuscaApiType {
   ]
 }
 // type 02
+interface Stat {
+  base_stat: number
+  effort: number
+  stat: {
+    name: string
+    url: string
+  }
+}
+interface Type {
+  slot: number
+  type: {
+    name: string
+    url: string
+  }
+}
 interface PromiseType {
   name: string
   weight: number
@@ -19,11 +34,13 @@ interface PromiseType {
   sprites: {
     front_default: string
   }
-  types: type[]
+  types: Type[]
+  stats: Stat[]
 }
-interface PokemonModalType {
+export interface PokemonModalType {
   nome: string
   front_default: string
+  stats: Stat[]
 }
 
 // type 03

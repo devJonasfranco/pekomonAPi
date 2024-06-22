@@ -9,11 +9,20 @@ import { ModalCard } from '../ModalCards'
 //   name: string
 //   front_default: string
 // }
+interface Stat {
+  base_stat: number
+  effort: number
+  stat: {
+    name: string
+    url: string
+  }
+}
 interface PromiseType {
   name: string
   sprites: {
     front_default: string
   }
+  stats: Stat[]
 }
 // Componente
 export function CardsPokemon() {
@@ -22,6 +31,7 @@ export function CardsPokemon() {
     setPokemonModal({
       nome: pokemon.name,
       front_default: pokemon.sprites.front_default,
+      stats: pokemon.stats,
     })
 
   return (

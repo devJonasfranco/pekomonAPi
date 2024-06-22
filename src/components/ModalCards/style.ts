@@ -1,5 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import styled from 'styled-components'
+import * as Progress from '@radix-ui/react-progress'
 
 export const Overlay = styled(Dialog.Overlay)`
   background-color: green;
@@ -42,4 +43,52 @@ export const Content = styled(Dialog.Content)`
     border-radius: 6px;
     margin: 1rem 0;
   }
+`
+
+export const Title = styled(Dialog.Title)`
+  text-transform: uppercase;
+`
+export const Close = styled(Dialog.Close)`
+  &:hover {
+    background-color: ${(props) => props.theme['gray-400']};
+    color: ${(props) => props.theme['yellow-500']};
+    transition: background-color 0.2s;
+    cursor: pointer;
+  }
+`
+export const Description = styled(Dialog.Description)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 10px;
+    p {
+      color: ${(props) => props.theme['gray-800']};
+
+      font-weight: 500;
+      line-height: 1.5rem;
+    }
+  }
+`
+
+export const ProgressRoot = styled(Progress.Root)`
+  position: relative;
+  overflow: hidden;
+  background: ${(props) => props.theme['gray-300']};
+  border-radius: 99999px;
+  flex: 2;
+
+  height: 10px;
+`
+export const ProgressIndicador = styled(Progress.Indicator)`
+  background-color: ${(props) => props.theme['yellow-300']};
+  width: 0%;
+  height: 100%;
+
+  transition: transform 0.8s;
 `
